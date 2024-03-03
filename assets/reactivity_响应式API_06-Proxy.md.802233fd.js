@@ -1,0 +1,41 @@
+import{_ as s,c as n,o as a,Q as e}from"./chunks/framework.5f28ab71.js";const F=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"reactivity/响应式API/06-Proxy.md","lastUpdated":1709451841000}'),l={name:"reactivity/响应式API/06-Proxy.md"},p=e(`<h2 id="_06-proxy" tabindex="-1">06-Proxy <a class="header-anchor" href="#_06-proxy" aria-label="Permalink to &quot;06-Proxy&quot;">​</a></h2><p>因为 <code>Object.defineProperty</code> 存在的问题，所以 <code>vue3</code> 中修改了这个核心 <code>API</code>，改为使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noreferrer">Proxy</a> 进行实现。</p><p><code>proxy</code> 顾名思义就是 <strong>代理</strong> 的意思。我们来看如下代码：</p><div class="language-js line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#89DDFF;">&lt;</span><span style="color:#F07178;">script</span><span style="color:#89DDFF;">&gt;</span></span>
+<span class="line"><span style="color:#A6ACCD;">  // 定义一个商品对象，包含价格和数量</span></span>
+<span class="line"><span style="color:#A6ACCD;">  let product = </span><span style="color:#89DDFF;">{</span></span>
+<span class="line"><span style="color:#A6ACCD;">    price: </span><span style="color:#F78C6C;">10</span><span style="color:#89DDFF;">,</span></span>
+<span class="line"><span style="color:#A6ACCD;">    quantity: </span><span style="color:#F78C6C;">2</span></span>
+<span class="line"><span style="color:#A6ACCD;">  </span><span style="color:#89DDFF;">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD;">  // new Proxy 接收两个参数（被代理对象，handler 对象）。</span></span>
+<span class="line"><span style="color:#A6ACCD;">  // 生成 proxy 代理对象实例，该实例拥有《被代理对象的所有属性》 ，并且可以被监听 getter 和 setter</span></span>
+<span class="line"><span style="color:#A6ACCD;">  // 此时：product 被称为《被代理对象》，proxyProduct 被称为《代理对象》</span></span>
+<span class="line"><span style="color:#A6ACCD;">  const proxyProduct = new Proxy(product, </span><span style="color:#89DDFF;">{</span></span>
+<span class="line"><span style="color:#89DDFF;">    </span><span style="color:#676E95;font-style:italic;">// 监听 proxyProduct 的 set 方法，在 proxyProduct.xx = xx 时，被触发</span></span>
+<span class="line"><span style="color:#89DDFF;">    </span><span style="color:#676E95;font-style:italic;">// 接收四个参数：被代理对象 tager，指定的属性名 key，新值 newVal，最初被调用的对象 receiver</span></span>
+<span class="line"><span style="color:#89DDFF;">    </span><span style="color:#676E95;font-style:italic;">// 返回值为一个 boolean 类型，true 表示属性设置成功</span></span>
+<span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#82AAFF;">set</span><span style="color:#A6ACCD;">(target</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;"> key</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;"> newVal</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;"> receiver) </span><span style="color:#89DDFF;">{</span></span>
+<span class="line"><span style="color:#89DDFF;">      </span><span style="color:#676E95;font-style:italic;">// 为 target 附新值</span></span>
+<span class="line"><span style="color:#A6ACCD;">      target</span><span style="color:#F07178;">[</span><span style="color:#A6ACCD;">key</span><span style="color:#F07178;">] = newVal</span></span>
+<span class="line"><span style="color:#89DDFF;">      </span><span style="color:#676E95;font-style:italic;">// 触发 effect 重新计算</span></span>
+<span class="line"><span style="color:#F07178;">      effect()</span></span>
+<span class="line"><span style="color:#F07178;">      return true</span></span>
+<span class="line"><span style="color:#F07178;">    },</span></span>
+<span class="line"><span style="color:#89DDFF;">    </span><span style="color:#676E95;font-style:italic;">// 监听 proxyProduct 的 get 方法，在 proxyProduct.xx 时，被触发</span></span>
+<span class="line"><span style="color:#89DDFF;">    </span><span style="color:#676E95;font-style:italic;">// 接收三个参数：被代理对象 tager，指定的属性名 key，最初被调用的对象 receiver</span></span>
+<span class="line"><span style="color:#89DDFF;">    </span><span style="color:#676E95;font-style:italic;">// 返回值为 proxyProduct.xx 的结果</span></span>
+<span class="line"><span style="color:#F07178;">    get(target, key, receiver) {</span></span>
+<span class="line"><span style="color:#F07178;">      return target[</span><span style="color:#A6ACCD;">key</span><span style="color:#F07178;">]</span></span>
+<span class="line"><span style="color:#F07178;">    }</span></span>
+<span class="line"><span style="color:#F07178;">  })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;font-style:italic;">// 总价格</span></span>
+<span class="line"><span style="color:#F07178;">  let total = 0;</span></span>
+<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;font-style:italic;">// 计算总价格的匿名函数</span></span>
+<span class="line"><span style="color:#F07178;">  let effect = () =&gt; {</span></span>
+<span class="line"><span style="color:#F07178;">    total = proxyProduct.price * proxyProduct.quantity;</span></span>
+<span class="line"><span style="color:#F07178;">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;font-style:italic;">// 第一次打印</span></span>
+<span class="line"><span style="color:#F07178;">  effect();</span></span>
+<span class="line"><span style="color:#F07178;">  console.log(\`总价格：\${total}\`); </span><span style="color:#676E95;font-style:italic;">// 总价格：20</span></span>
+<span class="line"><span style="color:#F07178;">&lt;/script&gt;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br></div></div><p>在以上代码中，我们可以发现，<code>Proxy</code> 和 <code>Object.defineProperty</code> 存在一个非常大的区别，那就是：</p><p>proxy</p><ol><li><code>Proxy</code> 将代理一个对象（被代理对象），得到一个新的对象（代理对象），同时拥有被代理对象中所有的属性。</li><li>当想要修改对象的指定属性时，我们应该使用 <strong>代理对象</strong> 进行修改</li><li><strong>代理对象</strong> 的任何一个属性都可以触发 <code>handler</code> 的 <code>getter</code> 和 <code>setter</code></li></ol><p>Object.defineProperty</p><ol><li><code>Object.defineProperty</code> 为 <strong>指定对象的指定属性</strong> 设置 <strong>属性描述符</strong></li><li>当想要修改对象的指定属性时，可以使用原对象进行修改</li><li>通过属性描述符，只有 <strong>被监听</strong> 的指定属性，才可以触发 <code>getter</code> 和 <code>setter</code></li></ol><p>所以当 <code>vue3</code> 通过 <code>Proxy</code> 实现响应性核心 <code>API</code> 之后，<code>vue</code> 将 <strong>不会</strong> 再存在新增属性时失去响应性的问题。</p>`,10),o=[p];function r(c,t,i,y,b,d){return a(),n("div",null,o)}const D=s(l,[["render",r]]);export{F as __pageData,D as default};
