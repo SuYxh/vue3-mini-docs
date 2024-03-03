@@ -5,7 +5,7 @@ import { useRoute } from 'vitepress'
 const DEV = inject('DEV') as Ref<boolean>
 const route = useRoute()
 
-const pageId = computed(() => route.path.replace('/mm-notes', ''))
+const pageId = computed(() => route.path.replace('/x', ''))
 </script>
 
 <template>
@@ -13,7 +13,7 @@ const pageId = computed(() => route.path.replace('/mm-notes', ''))
     <img
       v-if="!DEV"
       class="visitor"
-      :src="`https://visitor-badge.laobi.icu/badge?page_id=maomao1996.notes.${pageId}`"
+      :src="`https://visitor-badge.laobi.icu/badge?page_id=yangxinhao.${pageId}`"
       title="当前页面累计访问数"
       onerror="this.style.display='none'"
     />

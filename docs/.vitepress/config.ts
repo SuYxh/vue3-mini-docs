@@ -1,20 +1,13 @@
-import { createWriteStream } from "node:fs";
-import { resolve } from "node:path";
-import { SitemapStream } from "sitemap";
-import { defineConfig, PageData } from "vitepress";
-
+import { defineConfig } from "vitepress";
 import { head, nav, sidebar, algolia } from "./configs";
-
-const links: { url: string; lastmod: PageData["lastUpdated"] }[] = [];
 
 export default defineConfig({
   outDir: "../dist",
   base: process.env.APP_BASE_PATH || "/",
 
   lang: "zh-CN",
-  title: "vitepress-template",
-  description:
-    "成长之路，包含前端常用知识、源码阅读笔记、各种奇淫技巧、日常提效工具等",
+  title: "vue3-mini-docs",
+  description: "手写 vue3",
   head,
 
   lastUpdated: true,
@@ -39,11 +32,13 @@ export default defineConfig({
       label: "本页目录",
     },
 
-    socialLinks: [{ icon: "github", link: "https://github.com/SuYxh/vitepress-template" }],
+    socialLinks: [
+      { icon: "github", link: "https://github.com/SuYxh/vue3-mini-docs" },
+    ],
 
     footer: {
       message: "你相信光吗",
-      copyright: "Copyright © 2020-present",
+      copyright: "Copyright © 2024-present",
     },
 
     darkModeSwitchLabel: "外观",
@@ -57,22 +52,5 @@ export default defineConfig({
       prev: "上一篇",
       next: "下一篇",
     },
-  },
-
-  /* 生成站点地图 */
-  transformHtml: (_, id, { pageData }) => {
-    if (!/[\\/]404\.html$/.test(id))
-      links.push({
-        url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, "$2"),
-        lastmod: pageData.lastUpdated,
-      });
-  },
-  buildEnd: async ({ outDir }) => {
-    const sitemap = new SitemapStream({ hostname: "https://note.ironc.cn/" });
-    const writeStream = createWriteStream(resolve(outDir, "sitemap.xml"));
-    sitemap.pipe(writeStream);
-    links.forEach((link) => sitemap.write(link));
-    sitemap.end();
-    await new Promise((r) => writeStream.on("finish", r));
   },
 });

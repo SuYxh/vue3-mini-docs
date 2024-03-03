@@ -3,33 +3,34 @@ layout: home
 layoutClass: "m-home-layout"
 
 hero:
-  name: vitepress-template
-  text: Lifelong Growth
-  tagline: 道阻且长,行则将至
+  name: Vue3-Mini-Docs
+  text: 手写 mini 版本的 vue3
+  tagline: 一站式学习 vue3 源码
   image:
     src: /logo.png
-    alt: vitepress-template
+    alt: vue3-mini-docs
   actions:
-    - text: Go -->
-      link: /fe/es6/
-    - text: 前端导航
-      link: /nav
+    - text: 开始
+      link: /framework-design/
+    - text: vue3-mini
+      link: https://github.com/SuYxh/vue3-mini
       theme: alt
 features:
   - icon: 📖
-    title: 前端基础
-    details: 整理前端常用知识点<small>（面试八股文）</small><br />如有异议按你的理解为主，不接受反驳
-    link: /fe/javascript/types
-    linkText: 前端常用知识
+    title: Reactivity
+    details: Vue 3 的响应式系统使用 ES6 的 Proxy 特性来追踪和响应数据状态的改变，为构建动态用户界面提供了高效的数据绑定和更新机制
+    link: /reactivity/
+    linkText: 开始学习
   - icon: 🐞
-    title: 踩坑记录
-    details: 那些年我们踩过的坑<br />总有一些让你意想不到的问题
-    link: /pit/npm
-    linkText: 踩坑记录
+    title: Runtime
+    details: Vue 3 的运行时环境负责处理模板到真实 DOM 的渲染，组件的生命周期管理，以及通过优化和 Tree-shaking 提供更快速、轻量级的应用性能
+    link: /runtime/
+    linkText: 开始学习
   - icon: 💯
-    title: 吾志所向，一往无前。
-    details: '<small class="bottom-small">一个想躺平的小开发</small>'
-    link: https://www.yuque.com/jarvis-zzzhw/frontend
+    title: 编译器
+    details: Vue 3 的编译器将模板代码转换成高效的 JavaScript 渲染函数，通过编译时优化提高应用运行时的性能和效率
+    link: /compiler/
+    linkText: 开始学习
 ---
 
 <style>

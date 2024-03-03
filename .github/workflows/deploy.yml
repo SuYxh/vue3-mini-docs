@@ -50,7 +50,7 @@ jobs:
           # GitHub 密钥
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           # 指定仓库
-          REPOSITORY_NAME: SuYxh/vitepress-template
+          REPOSITORY_NAME: SuYxh/vue3-mini-docs
           # GitHub Pages 读取的分支
           BRANCH: gh-pages
           # 静态文件所在目录

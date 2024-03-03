@@ -2,23 +2,16 @@ import type { DefaultTheme } from "vitepress";
 
 export const nav: DefaultTheme.Config["nav"] = [
   {
-    text: "前端基础",
-    items: [
-      { text: "JavaScript 基础知识", link: "/fe/javascript/types" },
-      {
-        text: "CSS 相关",
-        items: [
-          { text: "CSS 语法", link: "/fe/css/spec" },
-        ],
-      },
-    ],
-    activeMatch: "^/fe",
+    text: "框架设计",
+    link: "/framework-design/index",
+    activeMatch: "^/framework-design",
   },
-  { text: "踩坑记录", link: "/pit/npm", activeMatch: "^/pit" },
   {
-    text: "Me",
-    items: [
-      { text: "掘金", link: "https://juejin.cn/user/2084329779636094/posts" },
-    ],
+    text: "项目搭建",
+    link: "/project-construction/index",
+    activeMatch: "^/project-construction",
   },
+  { text: "响应式", link: "/reactivity/index", activeMatch: "^/reactivity" },
+  { text: "运行时", link: "/runtime/index", activeMatch: "^/runtime" },
+  { text: "编译器", link: "/compiler/index", activeMatch: "^/compiler" },
 ];

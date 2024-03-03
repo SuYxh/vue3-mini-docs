@@ -1,5 +1,5 @@
 {
-  "name": "vitepress-template",
+  "name": "vue3-docs",
   "type": "module",
   "private": true,
   "version": "1.0.0",
@@ -7,18 +7,18 @@
   "description": "Development related notes",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SuYxh/vitepress-template.git"
+    "url": "git+https://github.com/SuYxh/vue3-mini-docs.git"
   },
   "bugs": {
-    "url": "https://github.com/SuYxh/vitepress-template/issues"
+    "url": "https://github.com/SuYxh/vue3-mini-docs/issues"
   },
   "license": "MIT",
-  "homepage": "https://github.com/SuYxh/vitepress-template#readme",
+  "homepage": "https://github.com/SuYxh/vue3-mini-docs#readme",
   "author": "dahuang <1806328384@qq.com>",
   "scripts": {
     "dev": "cross-env NODE_ENV=development vitepress dev docs",
     "build": "vitepress build docs",
-    "build:github": "cross-env APP_BASE_PATH=/vitepress-template/ npm run build",
+    "build:github": "cross-env APP_BASE_PATH=/vue3-mini-docs/ npm run build",
     "lint": "prettier --write .",
     "prepare": "husky install"
   },
