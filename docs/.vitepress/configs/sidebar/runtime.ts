@@ -45,4 +45,68 @@ export default [
       },
     ],
   },
+
+  {
+    text: "渲染器",
+    items: [
+      { text: "简介", link: "/runtime/renderer/index.md" },
+      {
+        text: "构建renderer",
+        link: "/runtime/renderer/1-构建renderer基本架构.md",
+      },
+      {
+        text: "完成 ELEMENT 节点挂载",
+        link: "/runtime/renderer/2-基于renderer完成ELEMENT节点挂载.md",
+      },
+      {
+        text: "合并渲染架构",
+        link: "/runtime/renderer/3-合并渲染架构.md",
+      },
+      {
+        text: "实现ELEMENT节点的更新",
+        link: "/runtime/renderer/4-实现ELEMENT节点的更新.md",
+      },
+      {
+        text: "处理不同元素的新旧节点",
+        link: "/runtime/renderer/5-处理新旧节点不同元素时ELEMENT节点的更新操作.md",
+      },
+      {
+        text: "ELEMENT节点的卸载操作",
+        link: "/runtime/renderer/6-删除元素-ELEMENT节点的卸载操作.md",
+      },
+
+      {
+        text: "深入属性挂载",
+        link: "/runtime/renderer/7-深入属性挂载.md",
+      },
+      {
+        text: "区分属性挂载",
+        link: "/runtime/renderer/8-区分处理ELEMENT节点的各种属性挂载.md",
+      },
+      {
+        text: "style属性的挂载和更新",
+        link: "/runtime/renderer/9-style属性的挂载和更新.md",
+      },
+      {
+        text: "深入事件更新",
+        link: "/runtime/renderer/10-深入事件更新.md",
+      },
+      {
+        text: "事件的挂载和更新",
+        link: "/runtime/renderer/11-事件的挂载和更新.md",
+      },
+      {
+        text: "Text节点的挂载更新",
+        link: "/runtime/renderer/12-Text节点的挂载-更新行为.md",
+      },
+      {
+        text: "Comment节点的挂载",
+        link: "/runtime/renderer/13-Comment节点的挂载行为.md",
+      },
+      {
+        text: "Fragment节点的挂载更新",
+        link: "/runtime/renderer/14-Fragment节点的挂载更新行为.md",
+      },
+    ],
+  },
 ];
