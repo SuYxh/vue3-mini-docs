@@ -139,4 +139,32 @@ export default [
       },
     ],
   },
+
+  {
+    text: "diff算法",
+    items: [
+      { text: "简介", link: "/runtime/diff/index.md" },
+      {
+        text: "自前向后的diff对比",
+        link: "/runtime/diff/1-场景一自前向后的diff对比.md",
+      },
+
+      {
+        text: "自后向前的diff对比",
+        link: "/runtime/diff/2-场景二自后向前的diff对比.md",
+      },
+      {
+        text: "新节点多余旧节点时的diff比对",
+        link: "/runtime/diff/3-场景三新节点多余旧节点时的diff比对.md",
+      },
+      {
+        text: "旧节点多于新节点时的diff比对",
+        link: "/runtime/diff/4-场景四旧节点多于新节点时的diff比对.md",
+      },
+      {
+        text: "乱序下的diff比对",
+        link: "/runtime/diff/5-场景五乱序下的diff比对.md",
+      },
+    ],
+  },
 ];
