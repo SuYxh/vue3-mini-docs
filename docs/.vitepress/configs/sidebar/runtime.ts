@@ -45,7 +45,6 @@ export default [
       },
     ],
   },
-
   {
     text: "渲染器",
     items: [
@@ -106,6 +105,37 @@ export default [
       {
         text: "Fragment节点的挂载更新",
         link: "/runtime/renderer/14-Fragment节点的挂载更新行为.md",
+      },
+    ],
+  },
+  {
+    text: "组件化",
+    items: [
+      { text: "简介", link: "/runtime/组件/index.md" },
+      {
+        text: "无状态组件挂载",
+        link: "/runtime/组件/1-完成无状态基础组件的挂载逻辑.md",
+      },
+
+      {
+        text: "有状态组件挂载",
+        link: "/runtime/组件/2-有状态的响应性组件挂载逻辑.md",
+      },
+      {
+        text: "组件生命周期",
+        link: "/runtime/组件/3-组件生命周期回调处理逻辑.md",
+      },
+      {
+        text: "生命周期访问响应性数据",
+        link: "/runtime/组件/4-生命回调钩子中访问响应性数据.md",
+      },
+      {
+        text: "组件响应性变化",
+        link: "/runtime/组件/5-响应性数据改变触发组件的响应性变化.md",
+      },
+      {
+        text: "setup函数挂载逻辑",
+        link: "/runtime/组件/6-setup函数挂载逻辑.md",
       },
     ],
   },
