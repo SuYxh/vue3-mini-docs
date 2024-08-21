@@ -83,4 +83,63 @@ export default [
       },
     ],
   },
+
+  {
+    text: "深入编辑器",
+    items: [
+      { text: "简介", link: "/compiler/深入编辑器/index.md" },
+      {
+        text: "响应性数据的处理逻辑",
+        link: "/compiler/深入编辑器/1-响应性数据的处理逻辑.md",
+      },
+
+      {
+        text: "AST解析逻辑",
+        link: "/compiler/深入编辑器/2-AST解析逻辑.md",
+      },
+      {
+        text: "AST转化逻辑",
+        link: "/compiler/深入编辑器/3-JavaScript-AST转化逻辑.md",
+      },
+      {
+        text: "render转化逻辑分析",
+        link: "/compiler/深入编辑器/4-render转化逻辑分析.md",
+      },
+      {
+        text: "generate生成render函数",
+        link: "/compiler/深入编辑器/5-generate生成render函数.md",
+      },
+
+      {
+        text: "render函数的执行处理",
+        link: "/compiler/深入编辑器/6-render函数的执行处理.md",
+      },
+
+      {
+        text: "多层级的处理逻辑",
+        link: "/compiler/深入编辑器/7-多层级的处理逻辑.md",
+      },
+      {
+        text: "指令解析的整体逻辑",
+        link: "/compiler/深入编辑器/8-指令解析的整体逻辑.md",
+      },
+      {
+        text: "AST解析逻辑",
+        link: "/compiler/深入编辑器/9-AST解析逻辑.md",
+      },
+      {
+        text: "构建vif转化模块",
+        link: "/compiler/深入编辑器/10-构建vif转化模块.md",
+      },
+
+      {
+        text: "transform的转化逻辑",
+        link: "/compiler/深入编辑器/11-transform的转化逻辑.md",
+      },
+      {
+        text: "生成render函数",
+        link: "/compiler/深入编辑器/12-生成render函数.md",
+      },
+    ],
+  },
 ];
