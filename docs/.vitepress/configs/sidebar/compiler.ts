@@ -142,4 +142,24 @@ export default [
       },
     ],
   },
+
+  {
+    text: "运行时编译时合并",
+    items: [
+      { text: "简介", link: "/compiler/运行时编译时合并/index.md" },
+      {
+        text: "render-createApp",
+        link: "/compiler/运行时编译时合并/1-render-createApp.md",
+      },
+
+      {
+        text: "template-createApp",
+        link: "/compiler/运行时编译时合并/2-template-createApp.md",
+      },
+      {
+        text: "总结",
+        link: "/compiler/运行时编译时合并/3-总结.md",
+      },
+    ],
+  },
 ];
